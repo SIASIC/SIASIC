@@ -1,4 +1,4 @@
-# Sistem-Bantuan-Persetujuan-Surat-Izin
+# SIASIC
 Aplikasi untuk membantu proses persetujuan surat izin 
 
 <div id="top"></div>
@@ -41,14 +41,14 @@ Aplikasi untuk membantu proses persetujuan surat izin
   <p align="center">
     Aplikasi untuk membantu proses persetujuan surat izin 
     <br />
-    <a href="https://github.com/alifirhas/Sistem-Bantuan-Persetujuan-Surat-Izin/wiki"><strong>See Wiki »</strong></a>
+    <a href="https://github.com/alifirhas/SIASIC/wiki"><strong>See Wiki »</strong></a>
     <br />
     <br />
     <a href="">View Demo</a>
     ·
-    <a href="https://github.com/alifirhas/Sistem-Bantuan-Persetujuan-Surat-Izin/issues">Report Bug</a>
+    <a href="https://github.com/alifirhas/SIASIC/issues">Report Bug</a>
     ·
-    <a href="https://github.com/alifirhas/Sistem-Bantuan-Persetujuan-Surat-Izin/issues">Request Feature</a>
+    <a href="https://github.com/alifirhas/SIASIC/issues">Request Feature</a>
   </p>
 </div>
 
@@ -60,7 +60,7 @@ Aplikasi untuk membantu proses persetujuan surat izin
 
 Ini merupakan project yang masih dalam tahap pengerajaan, jadi perubahan dalam deskripsi bisa terjadi kapan saja.
 
-Cek [Trello Board](https://trello.com/b/g8yCY0xD/sistem-bantuan-persetujuan-surat-izin) untuk melihat progress yang sedang dikerjakan dan akan dikerjakan.
+Cek [Trello Board](https://trello.com/b/g8yCY0xD/SIASIC) untuk melihat progress yang sedang dikerjakan dan akan dikerjakan.
 * * *
 ## Table of Contents
 
@@ -88,7 +88,7 @@ Dalam sebuah instansi pemerintahan, proses pemberian surat izin dilakukan dengan
 | 2    | Cuti Melahirkan            | Form cuti, Surat keterangan dari Bidan dan Akta nikah          |
 | 3    | Cuti Karena Alasan Penting | Form cuti dari yang bersangkutan                               |
 
-Kesulitan dalam proses persetujuan cuti ini adalah tidak adanya database dokter yang memiliki surat izin praktek dan database dokter bidan. Kesulitan juga terjadi karena proses masih dilakukan secara manual, ada kemungkinan bahwa  pemohon izin bisa memalsukan surat  izin sakit dari dokter. Untuk mengatasi hal tersebut, penulis berencana untuk melakukan proses pengenalan tulisa dan tanda tangan dari dokter dan bidan, kemudian menyimpan data tersebut sebagai model untuk proses identifikasi dokter dan bidan yang memiliki izin praktek dan identifikasi pemalsuan surat izin. Dengan begitu project **Sistem Bantuan Persetujuan Surat Izin** Dibuat.
+Kesulitan dalam proses persetujuan cuti ini adalah tidak adanya database dokter yang memiliki surat izin praktek dan database dokter bidan. Kesulitan juga terjadi karena proses masih dilakukan secara manual, ada kemungkinan bahwa  pemohon izin bisa memalsukan surat  izin sakit dari dokter. Untuk mengatasi hal tersebut, penulis berencana untuk melakukan proses pengenalan tulisa dan tanda tangan dari dokter dan bidan, kemudian menyimpan data tersebut sebagai model untuk proses identifikasi dokter dan bidan yang memiliki izin praktek dan identifikasi pemalsuan surat izin. Dengan begitu project **Sistem Informasi Administrasi Cuti** Dibuat.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -185,7 +185,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Alif Irhas - [Linkedin](https://www.linkedin.com/in/alif-irhas-0750331b3/)
 
-Trello board Link: [https://trello.com/b/g8yCY0xD/sistem-bantuan-persetujuan-surat-izin](https://trello.com/b/g8yCY0xD/sistem-bantuan-persetujuan-surat-izin)
+Trello board Link: [https://trello.com/b/g8yCY0xD/SIASIC](https://trello.com/b/g8yCY0xD/SIASIC)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -202,16 +202,16 @@ Resource yang penulis gunakan
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/alifirhas/Sistem-Bantuan-Persetujuan-Surat-Izin.svg?style=for-the-badge
-[contributors-url]: https://github.com/alifirhas/Sistem-Bantuan-Persetujuan-Surat-Izin/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/alifirhas/Sistem-Bantuan-Persetujuan-Surat-Izin.svg?style=for-the-badge
-[forks-url]: https://github.com/alifirhas/Sistem-Bantuan-Persetujuan-Surat-Izin/network/members
-[stars-shield]: https://img.shields.io/github/stars/alifirhas/Sistem-Bantuan-Persetujuan-Surat-Izin.svg?style=for-the-badge
-[stars-url]: https://github.com/alifirhas/Sistem-Bantuan-Persetujuan-Surat-Izin/stargazers
-[issues-shield]: https://img.shields.io/github/issues/alifirhas/Sistem-Bantuan-Persetujuan-Surat-Izin.svg?style=for-the-badge
-[issues-url]: https://github.com/alifirhas/Sistem-Bantuan-Persetujuan-Surat-Izin/issues
-[license-shield]: https://img.shields.io/github/license/alifirhas/Sistem-Bantuan-Persetujuan-Surat-Izin.svg?style=for-the-badge
-[license-url]: https://github.com/alifirhas/Sistem-Bantuan-Persetujuan-Surat-Izin/blob/master/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/alifirhas/SIASIC.svg?style=for-the-badge
+[contributors-url]: https://github.com/alifirhas/SIASIC/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/alifirhas/SIASIC.svg?style=for-the-badge
+[forks-url]: https://github.com/alifirhas/SIASIC/network/members
+[stars-shield]: https://img.shields.io/github/stars/alifirhas/SIASIC.svg?style=for-the-badge
+[stars-url]: https://github.com/alifirhas/SIASIC/stargazers
+[issues-shield]: https://img.shields.io/github/issues/alifirhas/SIASIC.svg?style=for-the-badge
+[issues-url]: https://github.com/alifirhas/SIASIC/issues
+[license-shield]: https://img.shields.io/github/license/alifirhas/SIASIC.svg?style=for-the-badge
+[license-url]: https://github.com/alifirhas/SIASIC/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/alif-irhas-0750331b3/
 [product-screenshot]: images/screenshot.png
