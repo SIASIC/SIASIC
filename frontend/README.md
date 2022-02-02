@@ -1,96 +1,191 @@
-## [Material Kit - React](https://material-kit-react.devias.io/) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?text=%F0%9F%9A%A8Devias%20Freebie%20Alert%20-%20An%20awesome%20ready-to-use%20register%20page%20made%20with%20%23material%20%23react%0D%0Ahttps%3A%2F%2Fdevias.io%20%23createreactapp%20%23devias%20%23material%20%23freebie%20%40devias-io)
+# Windmill Dashboard React
 
-![license](https://img.shields.io/badge/license-MIT-blue.svg)
+Four 100 scores and PWA ready. Just connect your data.
 
-[![Material Kit - React](https://github.com/devias-io/material-kit-react/blob/main/public/static/thumbnail.png)](https://material-kit-react.devias.io/)
+🚀 [See it live](https://windmillui.com/dashboard-react)
 
-> Free React Admin Dashboard made with [MUI's](https://mui.com/?ref=devias-io) components, [React](https://reactjs.org/?ref=devias-io) and of course [Next.js](https://github.com/vercel/next.js/?ref=devias-io) to boost your app development process!
+This is not a template. This is a complete application, built on top of React, with all tiny details taken care of so you just need to bring the data to feed it.
 
-## Demo
+Accessibility is a priority in my projects and I think it should be in yours too, so this was developed listening to real screen readers, focus traps and keyboard navigation are available everywhere.
 
-- [Dashboard Page](https://material-kit-react.devias.io)
-- [Users Page](https://material-kit-react.devias.io/customers)
-- [Products Page](https://material-kit-react.devias.io/products)
-- [Register Page](https://material-kit-react.devias.io/register)
-- [Login Page](https://material-kit-react.devias.io/login)
-- [Account Page](https://material-kit-react.devias.io/account)
-- [Settings Page](https://material-kit-react.devias.io/settings)
+## 📦 Features
 
-## Free Figma Community File
- - [Duplicate File](https://www.figma.com/community/file/1039837897183395483/Devias-Dashboard-Design-Library-Kit)
+- 🦮 Throughly accessible (developed using screen readers)
+- 🌗 Dark theme enabled (load even different images based on theme)
+- 🧩 Multiple (custom) components
+- ⚡ Code splitting
+- Tailwind CSS
+- [Windmill React UI](https://windmillui.com/react-ui)
+- React Router
+- Heroicons
+- Chart.js
+- PWA delivering offline-first and app-like experience
 
-## Upgrade to PRO Version
+## 📚 Docs
 
-We also have a pro version of this product which bundles even more pages and components if you want to save more time and design efforts :)
+### General components
 
-| Free Version (this one)  | [Material Kit Pro - React](https://material-ui.com/store/items/devias-kit-pro/) |
-| ------------------------ | :----------------------------------------------------------- |
-| **7** Demo Pages         | **40+** demo pages
-| -                        | ✔ Dark & light mode
-| -                        | ✔ Authentication with *Amplify**, **Auth0**, **JWT** and **Firebase**
-| -                        | ✔ TypeScript version - for Standard Plus and Extended license
-| -                        | ✔ Design files (sketch & figma) - for Standard Plus and Extended license
-| -                        | ✔ Complete users flows
+Windmill Dashboard React is built on top of [Windmill React UI](https://windmillui.com/react-ui). You will find the documentation for every small component there.
 
-## Quick start
+### Routing
 
-- [Download from Github](https://github.com/devias-io/material-kit-react/archive/master.zip) or [Download from Devias](https://devias.io/products/material-kit-react) or clone the repo: `git clone https://github.com/devias-io/material-kit-react.git`
+Routes in Windmill Dashboard are separated into two categories, sidebar ([routes/sidebar.js](src/routes/sidebar.js)) and general ([routes/index.js](src/routes/index.js)).
 
-- Make sure your NodeJS and npm versions are up to date for `React 17`
+#### Sidebar routes
 
-- Install dependencies: `npm install` or `yarn`
+These are the routes that will show in the sidebar. They expect three properties:
 
-- Start the server: `npm run dev` or `yarn dev`
+- `path`: the destination;
+- `name`: the name to be shown;
+- `icon`: an icon to illustrate the item
 
-- Views are on: `localhost:3000`
+Item that are used as dropdowns, like the Pages option, don't need a `path`, but expect a `routes` array of objects with `path` and `name`:
 
-## File Structure
-
-Within the download you'll find the following directories and files:
-
-```
-material-kit-react
-
-┌── .eslintrc.json
-├── .gitignore
-├── CHANGELOG.md
-├── jsconfig.json
-├── LICENSE.md
-├── package.json
-├── README.md
-├── public
-└── src
-	├── __mocks__
-	├── components
-	├── icons
-	├── theme
-	├── utils
-	└── pages
-		├── 404.js
-		├── _app.js
-		├── _document.js
-		├── account.js
-		├── customers.js
-		├── index.js
-		├── login.js
-		├── products.js
-		├── register.js
-		└── settings.js
+```js
+// sidebar.js
+{
+  path: '/app/tables',
+  icon: 'TablesIcon',
+  name: 'Tables',
+},
+{
+  icon: 'PagesIcon', // <-- this is used as a submenu, so no path
+  name: 'Pages',
+  routes: [
+    // submenu
+    {
+      path: '/login',
+      name: 'Login', // <-- these don't have icons
+    },
+    {
+      path: '/create-account',
+      name: 'Create account',
+    },
 ```
 
-## Resources
+#### General (Router) routes
 
-- More freebies like this one: <https://devias.io>
+These are **internal** (private) routes. They will be rendered inside the app, using the default `containers/Layout`.
 
-## Reporting Issues:
+If you want to add a route to, let's say, a landing page, you should add it to the `App`'s router ([src/App.js](src/App.js), exactly like `Login`, `CreateAccount` and other pages are routed.
 
-- [Github Issues Page](https://github.com/devias-io/react-material-dashboard/issues?ref=devias-io)
+#### How to add a new page to router?
 
-## License
+1. Create your page inside `src/pages`, say `MyPage.js`;
+2. Add it to the global router (`src/routes/index.js`)
 
-- Licensed under MIT (https://github.com/devias-io/react-material-dashboard/blob/master/LICENSE.md)
+```js
+const MyPage = lazy(() => import('../pages/MyPage'))
+```
 
-## Contact Us
+Then add it to the `routes` array:
 
-- Email Us: support@deviasio.zendesk.com
-- [Follow us on Instagram](https://www.instagram.com/deviasio/)
+```js
+{
+  path: '/my-page', // the url that will be added to /app/
+  component: MyPage, // the page component you jsut imported
+}
+```
+
+3. If you want to make this page accessible from the sidebar, you have to options:
+
+- add it to the root `routes` array
+
+```js
+{
+  path: '/app/my-page', // /app + the url you added in routes/index.js
+  icon: 'HomeIcon', // the component being exported from src/icons/index.js
+  name: 'My Page', // name that appear in Sidebar
+},
+```
+
+- add it as an option under a dropdown
+
+```js
+{
+  icon: 'PagesIcon',
+  name: 'Pages',
+  routes: [
+    // submenu
+    {
+      path: '/app/my-page',
+      name: 'My Page',
+    },
+```
+
+If you're asking where does this `/app` come from, it is from this line inside `src/App.js`, that renders the app:
+
+```jsx
+<Route path="/app" component={Layout} />
+```
+
+---
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
