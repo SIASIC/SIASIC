@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
 		console.log("data:", data);
 		console.log("response:", response);
 
-		if (response["status"] == 200) {
+		if (response["status"] === 200) {
 			// console.log(data['access'])
 			// console.log(data['refresh'])
 			setAuthToken(data);
@@ -79,7 +79,7 @@ export const AuthProvider = ({ children }) => {
 
 		let data = await response.json();
 
-        if (response["status"] == 200) {
+        if (response["status"] === 200) {
             let newAuthToken = JSON.parse(localStorage.getItem('authToken'))
             newAuthToken.access = data.access
 

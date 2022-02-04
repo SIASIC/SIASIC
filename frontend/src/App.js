@@ -7,8 +7,7 @@ import {
 } from "react-router-dom";
 import AccessibleNavigationAnnouncer from "./components/AccessibleNavigationAnnouncer";
 import PrivateRoute from "./utils/PrivateRoute";
-import AuthContext, { AuthProvider } from "./context/AuthContext";
-import Header from "./components/Header";
+import { AuthProvider } from "./context/AuthContext";
 
 const Layout = lazy(() => import("./containers/Layout"));
 const Login = lazy(() => import("./pages/Login"));
@@ -25,8 +24,6 @@ function App() {
 						<Route path="/create-account" component={CreateAccount} />
 						<Route path="/forgot-password" component={ForgotPassword} />
 						<Route path="/login" component={Login} />
-
-						<PrivateRoute path="/header" component={Header} />
 
 						{/* Place new routes over this */}
 						<PrivateRoute path="/app" component={Layout} />

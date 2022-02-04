@@ -8,7 +8,6 @@ import AuthContext from "../context/AuthContext";
 
 function Login() {
 	let { loginUser } = useContext(AuthContext);
-	let { user } = useContext(AuthContext);
 	// let { apiResponse } = useContext(AuthContext);
 
 	return (
