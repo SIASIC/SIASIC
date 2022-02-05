@@ -13,5 +13,5 @@ urlpatterns = [
     path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
-    path('jatah-cuti/', views.get_jatah_cuti, name="jatah-cuti")
+    path('jenis-cuti/', views.get_jatah_cuti, name="jenis-cuti")
 ]

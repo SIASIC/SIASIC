@@ -6,8 +6,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from .serializers import JatahCutiSerializer
-from .models import JatahCuti
+from .serializers import JenisCutiSerializer
+from .models import JenisCuti
 
 # Create your views here.
 
@@ -19,8 +19,8 @@ def get_routes(request):
 @permission_classes([IsAuthenticated])
 def get_jatah_cuti(request):
 
-    jt = JatahCuti.objects.all()
-    serializer = JatahCutiSerializer(jt, many=True)
+    jt = JenisCuti.objects.all()
+    serializer = JenisCutiSerializer(jt, many=True)
 
     return Response(serializer.data)
 

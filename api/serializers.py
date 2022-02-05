@@ -1,8 +1,8 @@
 from rest_framework.serializers import ModelSerializer
-from .models import JatahCuti
+from .models import JenisCuti
 
-class JatahCutiSerializer(ModelSerializer):
+class JenisCutiSerializer(ModelSerializer):
     class Meta:
-        model = JatahCuti
+        model = JenisCuti
         fields = '__all__'
 
