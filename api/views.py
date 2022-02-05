@@ -6,8 +6,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from .serializers import JenisCutiSerializer
-from .models import JenisCuti
+from .serializers import JenisCutiSerializer, UserLevelSerializer
+from .models import JenisCuti, UserLevel
+from .permissions import RoleAdmin, RoleAtasan, RolePejabat, RoleBapeg
 
 # Create your views here.
 
@@ -24,6 +25,45 @@ def get_jatah_cuti(request):
 
     return Response(serializer.data)
 
+@api_view(['GET'])
+@permission_classes([RoleAdmin])
+def get_role_admin(request):
+
+    userLV = UserLevel.objects.get(user=request.user.id)
+    serializer = UserLevelSerializer(userLV, many=False)
+    # role = request.user.username
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([RoleAtasan])
+def get_role_atasan(request):
+
+    userLV = UserLevel.objects.get(user=request.user.id)
+    serializer = UserLevelSerializer(userLV, many=False)
+    # role = request.user.username
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([RolePejabat|RoleAdmin])
+def get_role_pejabat(request):
+
+    userLV = UserLevel.objects.get(user=request.user.id)
+    serializer = UserLevelSerializer(userLV, many=False)
+    # role = request.user.username
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([RoleBapeg])
+def get_role_bapeg(request):
+
+    userLV = UserLevel.objects.get(user=request.user.id)
+    serializer = UserLevelSerializer(userLV, many=False)
+    # role = request.user.username
+
+    return Response(serializer.data)
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
