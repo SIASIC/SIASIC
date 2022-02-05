@@ -56,7 +56,7 @@ class UserLevel(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     nip = models.CharField(max_length=18, null=True)
-    Level = models.CharField(
+    level = models.CharField(
         max_length= 3,
         choices=LEVEL,
     )
