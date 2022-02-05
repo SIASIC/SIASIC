@@ -67,10 +67,13 @@ def get_role_bapeg(request):
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
+        user_level = UserLevel.objects.get(user=user.id)
+
         token = super().get_token(user)
 
         # Add custom claims
         token['username'] = user.username
+        token['user_level'] = user_level.level
         # ...
 
         return token
