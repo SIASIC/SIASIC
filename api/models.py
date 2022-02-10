@@ -21,7 +21,9 @@ class FormCuti(models.Model):
     pns_unit_kerja = models.CharField(max_length=100)
     pns_jabatan = models.CharField(max_length=100)
     pns_masa_kerja = models.IntegerField()
-    jenis_cuti_id = models.ForeignKey(JenisCuti, on_delete=models.SET_NULL, null=True)
+    jenis_cuti = models.ForeignKey(JenisCuti, 
+        related_name='jenis_cuti',
+        on_delete=models.SET_NULL, null=True)
     alasan = models.TextField()
     selama = models.IntegerField()
     tanggal_mulai = models.DateField()
@@ -41,9 +43,13 @@ class FormCuti(models.Model):
         choices=JENIS_PERSETUJUAN,
     )
     form_scan_bertanda_tangan = models.CharField(max_length=100)
-    pengisi = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    pengisi = models.ForeignKey(User,
+        related_name='pengisi',
+        on_delete=models.SET_NULL, null=True)
 class FilePersyaratan(models.Model):
-    form_cuti_id = models.ForeignKey(FormCuti, on_delete=models.CASCADE, null=True)
+    form_cuti = models.ForeignKey(FormCuti, 
+        related_name='file_syarat',
+        on_delete=models.CASCADE, null=True)
     path = models.TextField()
 
 class UserLevel(models.Model):
@@ -54,7 +60,9 @@ class UserLevel(models.Model):
         ('4', 'Bapeg'),
     ]
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User,
+        related_name='role',
+        on_delete=models.CASCADE)
     nip = models.CharField(max_length=18, null=True)
     level = models.CharField(
         max_length= 3,
@@ -62,9 +70,16 @@ class UserLevel(models.Model):
     )
 
 class UnitKerja(models.Model):
-    api_unit_kerja_id = models.IntegerField()
-    atasan = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    api_unit_kerja = models.IntegerField()
+    atasan = models.ForeignKey(User, 
+        related_name='atasan_unit',
+        on_delete=models.SET_NULL, 
+        null=True)
 
 class Bapeg(models.Model):
-    unit_kerja_id = models.ForeignKey(UnitKerja, on_delete=models.CASCADE, null=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    unit_kerja = models.ForeignKey(UnitKerja, 
+        related_name='tempat_unit',
+        on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, 
+        related_name='anggota_unit',
+        on_delete=models.CASCADE, null=True)

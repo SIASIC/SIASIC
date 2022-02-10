@@ -19,4 +19,7 @@ urlpatterns = [
     path('role/atasan/', views.get_role_atasan, name="role-atasan"),
     path('role/pejabat/', views.get_role_pejabat, name="role-pejabat"),
     path('role/bapeg/', views.get_role_bapeg, name="role-bapeg"),
+
+    path('role/', views.get_role, name="role"),
+    path('user/', views.get_user, name="user"),
 ]

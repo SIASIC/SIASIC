@@ -1,10 +1,10 @@
 import React from "react";
 
-function Login() {
+function Login({authuser}) {
 
 	return (
 		<div>
-            Ini Admin
+            Ini Admin {authuser.role}
         </div>
 	);
 }

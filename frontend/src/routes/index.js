@@ -25,6 +25,7 @@ const routes = [
   {
     path: '/dashboard', // the url
     component: Dashboard, // view rendered
+    roles : ['1', '2', '3'],
   },
   {
     path: '/forms',

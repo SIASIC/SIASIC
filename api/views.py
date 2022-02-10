@@ -6,7 +6,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from .serializers import JenisCutiSerializer, UserLevelSerializer
+from django.contrib.auth.models import User
+from .serializers import JenisCutiSerializer, UserLevelSerializer, UserSerializer
 from .models import JenisCuti, UserLevel
 from .permissions import RoleAdmin, RoleAtasan, RolePejabat, RoleBapeg
 
@@ -16,12 +17,35 @@ from .permissions import RoleAdmin, RoleAtasan, RolePejabat, RoleBapeg
 def get_routes(request):
     return Response("Halo")
 
+# User
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_user(request):
+    user = request.user
+    user_level = UserLevel.objects.get(user=request.user.id)
+    serializer = UserSerializer(user, many=False)
+
+    result = serializer.data
+    result['role'] = user_level.get_level_display()
+
+    return Response(result)
+
+# Role permission testing
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_jatah_cuti(request):
 
     jt = JenisCuti.objects.all()
     serializer = JenisCutiSerializer(jt, many=True)
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_role(request):
+
+    userLV = UserLevel.objects.get(user=request.user.id)
+    serializer = UserLevelSerializer(userLV, many=False)
 
     return Response(serializer.data)
 
@@ -64,6 +88,8 @@ def get_role_bapeg(request):
     # role = request.user.username
 
     return Response(serializer.data)
+
+# Token
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):

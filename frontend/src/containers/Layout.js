@@ -8,6 +8,8 @@ import Main from '../containers/Main'
 import ThemedSuspense from '../components/ThemedSuspense'
 import { SidebarContext } from '../context/SidebarContext'
 
+import RoleBasedRoute from '../utils/RoleBasedRoute'
+
 const Page404 = lazy(() => import('../pages/404'))
 
 function Layout() {
@@ -31,11 +33,13 @@ function Layout() {
             <Switch>
               {routes.map((route, i) => {
                 return route.component ? (
-                  <Route
+                  <RoleBasedRoute
                     key={i}
                     exact={true}
                     path={`/app${route.path}`}
-                    render={(props) => <route.component {...props} />}
+                    roles={route.roles}
+                    component={route.component}
+                    // render={(props) => <route.component {...props} />}
                   />
                 ) : null
               })}

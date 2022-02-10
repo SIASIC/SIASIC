@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { Route, Redirect } from 'react-router-dom'
 import jwt_decode from "jwt-decode";
+import AuthContext from "../context/AuthContext";
 
 function RoleBasedRoute({ component: Component, roles, ...rest }) {
+	let [authUser, setAuthUser] = useState([])
+	let {authToken} = useContext(AuthContext)
+
+	useEffect(() => {
+		getAuthUser()
+	}, [])
+
+	let getAuthUser = async () => {
+		let response = await fetch("http://127.0.0.1:8000/api/user", {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				'Authorization': 'Bearer ' + String(authToken.access)
+			}
+		})
+		let data = await response.json()
+		setAuthUser(data)
+	}
+
 	return (
 		<>
 			{grantPermission(roles) && (
@@ -10,7 +30,7 @@ function RoleBasedRoute({ component: Component, roles, ...rest }) {
 					{...rest}
 					render={(props) => (
 						<>
-							<Component {...props} />
+							<Component {...props} authuser={authUser}/>
 						</>
 					)}
 				/>
