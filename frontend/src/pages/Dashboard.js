@@ -49,35 +49,15 @@ function Dashboard({ authuser }) {
 		setData(response.slice((page - 1) * resultsPerPage, page * resultsPerPage));
 	}, [page]);
 
-	let {user} = useContext(AuthContext)
+	let { user } = useContext(AuthContext);
 
 	return (
 		<>
 			<PageTitle>Dashboard</PageTitle>
 
-			{/* <CTA /> */}
-
-			{/* <!-- Cards --> */}
-			<div className="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2 xl:grid-cols-3">
-				<InfoCard title="Jumlah Cuti Hari Ini" value="12">
-					<RoundIcon
-						icon={MoneyIcon}
-						iconColorClass="text-green-500 dark:text-green-100"
-						bgColorClass="bg-green-100 dark:bg-green-500"
-						className="mr-4"
-					/>
-				</InfoCard>
-
-				<InfoCard title="Jumlah Cuti Kemarin" value="6389">
-					<RoundIcon
-						icon={PeopleIcon}
-						iconColorClass="text-orange-500 dark:text-orange-100"
-						bgColorClass="bg-orange-100 dark:bg-orange-500"
-						className="mr-4"
-					/>
-				</InfoCard>
-
-				<InfoCard title={authuser.role} value={ user.username }>
+			{/* <!-- User Card --> */}
+			<div className="mb-8">
+				<InfoCard title={authuser.role} value={user.username}>
 					<RoundIcon
 						icon={HeartIcon}
 						iconColorClass="text-red-500 dark:text-red-100"
@@ -88,7 +68,27 @@ function Dashboard({ authuser }) {
 			</div>
 
 			<div className="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2 xl:grid-cols-3">
+				{/* Card count */}
 				<div className="col-span-2">
+					<div className="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2 xl:grid-cols-2">
+						<InfoCard title="Jumlah Cuti Hari Ini" value="12">
+							<RoundIcon
+								icon={MoneyIcon}
+								iconColorClass="text-green-500 dark:text-green-100"
+								bgColorClass="bg-green-100 dark:bg-green-500"
+								className="mr-4"
+							/>
+						</InfoCard>
+
+						<InfoCard title="Jumlah Cuti Kemarin" value="6389">
+							<RoundIcon
+								icon={PeopleIcon}
+								iconColorClass="text-orange-500 dark:text-orange-100"
+								bgColorClass="bg-orange-100 dark:bg-orange-500"
+								className="mr-4"
+							/>
+						</InfoCard>
+					</div>
 					<div className="gap-6">
 						<ChartCard title="Trafik cuti">
 							<Line {...lineOptions} />
@@ -97,6 +97,11 @@ function Dashboard({ authuser }) {
 					</div>
 				</div>
 
+				{/* 
+					Admin: Form Terbaru
+					Atasan/Bapeg : Form selesai diproses terbaru
+					Pejabat : Form Terbaru yang bersangkutan
+				*/}
 				<TableContainer>
 					<Table>
 						<TableHeader>
@@ -140,14 +145,21 @@ function Dashboard({ authuser }) {
 
 			<PageTitle>Semua Form Cuti</PageTitle>
 			<div className="mb-8">
+
+				{/* 
+					Admin: Form order latest
+					Atasan/Bapeg : Form menunggu balasan
+					Pejabat : Form belum dibaca & form belum diproses
+				*/}
 				<TableContainer>
 					<Table>
 						<TableHeader>
 							<tr>
-								<TableCell>Client</TableCell>
-								<TableCell>Amount</TableCell>
-								<TableCell>Status</TableCell>
-								<TableCell>Date</TableCell>
+								<TableCell>PNS</TableCell>
+								<TableCell>Unit Kerja</TableCell>
+								<TableCell>Jenis Cuti</TableCell>
+								<TableCell>Alasan</TableCell>
+								<TableCell>Action</TableCell>
 							</tr>
 						</TableHeader>
 						<TableBody>
@@ -168,12 +180,15 @@ function Dashboard({ authuser }) {
 										<span className="text-sm">$ {user.amount}</span>
 									</TableCell>
 									<TableCell>
-										<Badge type={user.status}>{user.status}</Badge>
+										<span className="text-sm">$ {user.amount}</span>
 									</TableCell>
 									<TableCell>
 										<span className="text-sm">
 											{new Date(user.date).toLocaleDateString()}
 										</span>
+									</TableCell>
+									<TableCell>
+										<Badge type={user.status}>{user.status}</Badge>
 									</TableCell>
 								</TableRow>
 							))}

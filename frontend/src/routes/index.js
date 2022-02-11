@@ -30,34 +30,42 @@ const routes = [
   {
     path: '/forms',
     component: Forms,
+    roles : ['1', '2', '3'],
   },
   {
     path: '/cards',
     component: Cards,
+    roles : ['1', '2', '3'],
   },
   {
     path: '/charts',
     component: Charts,
+    roles : ['1', '2', '3'],
   },
   {
     path: '/buttons',
     component: Buttons,
+    roles : ['1', '2', '3'],
   },
   {
     path: '/modals',
     component: Modals,
+    roles : ['1', '2', '3'],
   },
   {
     path: '/tables',
     component: Tables,
+    roles : ['1', '2', '3'],
   },
   {
     path: '/404',
     component: Page404,
+    roles : ['1', '2', '3'],
   },
   {
     path: '/blank',
     component: Blank,
+    roles : ['1', '2', '3'],
   },
 ]
 
