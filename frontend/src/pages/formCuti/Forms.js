@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
 
-import CTA from "../../components/CTA";
 import PageTitle from "../../components/Typography/PageTitle";
 import SectionTitle from "../../components/Typography/SectionTitle";
 import { Input, Button, Label, Select, Textarea } from "@windmill/react-ui";
@@ -8,7 +8,25 @@ import { Input, Button, Label, Select, Textarea } from "@windmill/react-ui";
 import { MailIcon } from "../../icons";
 import Buttons from "../Buttons";
 
+// Import React FilePond
+import { FilePond, File, registerPlugin } from "react-filepond";
+
+// Import FilePond styles
+import "filepond/dist/filepond.min.css";
+
+// Import the Image EXIF Orientation and Image Preview plugins
+// Note: These need to be installed separately
+// `npm i filepond-plugin-image-preview filepond-plugin-image-exif-orientation --save`
+import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
+import FilePondPluginImagePreview from "filepond-plugin-image-preview";
+import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
+
+// Register the plugins
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
+
 function Forms() {
+	const [files, setFiles] = useState([]);
+
 	return (
 		<>
 			<PageTitle>Tambah Form Cuti</PageTitle>
@@ -98,21 +116,52 @@ function Forms() {
 				</div>
 			</div>
 
-      <SectionTitle>Catatan Cuti</SectionTitle>
+			<SectionTitle>Catatan Cuti</SectionTitle>
 
 			<div className="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-        <center>Catatan cuti</center>
-      </div>
+				<center>Catatan cuti</center>
+			</div>
 
-      <SectionTitle>Upload File Persyaratan</SectionTitle>
+			<SectionTitle>Alamat Cuti</SectionTitle>
 
-      <div className="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-        <center>File Pond</center>
-      </div>
+			<div className="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
-			<Button>
+				<Label>
+					<span>Alamat selama menjalankan cuti</span>
+					<Textarea
+						className="mt-1"
+						rows="3"
+						placeholder="Enter some long form content."
+					/>
+				</Label>
+
+        <Label className="mt-4">
+          <span>Telepon</span>
+          <Input className="mt-1" placeholder="120" />
+        </Label>
+
+			</div>
+
+			<SectionTitle>Upload File Persyaratan</SectionTitle>
+
+			<div className="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+				<FilePond
+					className="mt-4"
+					files={files}
+					onupdatefiles={setFiles}
+					allowMultiple={true}
+					maxFiles={3}
+					server="/api"
+					name="files"
+					labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+				/>
+			</div>
+
+			<Button className="mb-4">
 				<span>Submit Form</span>
 			</Button>
+
+			<div className="my-8"></div>
 		</>
 	);
 }
