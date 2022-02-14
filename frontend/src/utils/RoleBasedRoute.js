@@ -19,8 +19,12 @@ function RoleBasedRoute({ component: Component, roles, ...rest }) {
 				'Authorization': 'Bearer ' + String(authToken.access)
 			}
 		})
-		let data = await response.json()
-		setAuthUser(data)
+		if (response['status'] === 200){
+			let data = await response.json()
+			setAuthUser(data)
+		}else{
+			AuthContext.logoutUser()
+		}
 	}
 
 	return (

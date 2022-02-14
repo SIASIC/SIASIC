@@ -11,6 +11,9 @@ const Tables = lazy(() => import('../pages/Tables'))
 const Page404 = lazy(() => import('../pages/404'))
 const Blank = lazy(() => import('../pages/Blank'))
 
+const FormCutiDash = lazy(() => import('../pages/formCuti/Index'))
+const FormCutiInput = lazy(()=> import('../pages/formCuti/Forms'))
+
 /**
  * ⚠ These are internal routes!
  * They will be rendered inside the app, using the default `containers/Layout`.
@@ -26,6 +29,16 @@ const routes = [
     path: '/dashboard', // the url
     component: Dashboard, // view rendered
     roles : ['1', '2', '3'],
+  },
+  {
+    path: '/form-cuti',
+    component: FormCutiDash,
+    roles : ['1', '2', '3'],
+  },
+  {
+    path: '/form-cuti/add',
+    component: FormCutiInput,
+    roles: ['1','2','3']
   },
   {
     path: '/forms',
