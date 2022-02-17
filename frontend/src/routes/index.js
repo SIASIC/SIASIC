@@ -13,6 +13,7 @@ const Blank = lazy(() => import('../pages/Blank'))
 
 const FormCutiDash = lazy(() => import('../pages/formCuti/Index'))
 const FormCutiInput = lazy(()=> import('../pages/formCuti/Forms'))
+const FormCutiEdit = lazy(()=> import('../pages/formCuti/FormsViewEdit'))
 
 /**
  * ⚠ These are internal routes!
@@ -38,6 +39,11 @@ const routes = [
   {
     path: '/form-cuti/add',
     component: FormCutiInput,
+    roles: ['1','2','3']
+  },
+  {
+    path: '/form-cuti/edit',
+    component: FormCutiEdit,
     roles: ['1','2','3']
   },
   {

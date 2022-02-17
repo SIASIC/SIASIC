@@ -51,7 +51,7 @@ function Tables() {
 			setIsFilterOpen("hidden");
 		}
 		// setIsFilterOpen(!isFilterOpen);
-		console.log(isFilterOpen);
+		// console.log(isFilterOpen);
 	}
 
 	// setup pages control for every table
@@ -144,16 +144,19 @@ function Tables() {
 					</Dropdown>
 				</div>
 				<div>
-					<Button iconLeft={FilterIcon} onClick={handlerFilterClick} className="fill-current">
+					<Button
+						iconLeft={FilterIcon}
+						onClick={handlerFilterClick}
+						className="fill-current"
+					>
 						<span>Filter</span>
 					</Button>
 				</div>
 				<div>
-					<Link to='/app/form-cuti/add'> 
+					<Link to="/app/form-cuti/add">
 						<Button iconLeft={PlusIcon} className="fill-current">
 							<span>Tambah</span>
 						</Button>
-					
 					</Link>
 				</div>
 			</div>
@@ -281,9 +284,12 @@ function Tables() {
 								</TableCell>
 								<TableCell>
 									<div className="flex items-center space-x-4">
-										<Button layout="link" size="icon" aria-label="Edit">
-											<EditIcon className="w-5 h-5" aria-hidden="true" />
-										</Button>
+										<Link to="/app/form-cuti/edit">
+											<Button layout="link" size="icon" aria-label="Edit">
+												<EditIcon className="w-5 h-5" aria-hidden="true" />
+											</Button>
+										</Link>
+
 										<Button layout="link" size="icon" aria-label="Delete">
 											<TrashIcon className="w-5 h-5" aria-hidden="true" />
 										</Button>
