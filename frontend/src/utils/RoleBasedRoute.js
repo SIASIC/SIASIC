@@ -1,11 +1,12 @@
 import React, { useEffect, useContext, useState } from "react";
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect, useHistory } from 'react-router-dom'
 import jwt_decode from "jwt-decode";
 import AuthContext from "../context/AuthContext";
 
 function RoleBasedRoute({ component: Component, roles, ...rest }) {
 	let [authUser, setAuthUser] = useState([])
 	let {authToken} = useContext(AuthContext)
+	const history = useHistory();
 
 	useEffect(() => {
 		getAuthUser()
@@ -23,7 +24,9 @@ function RoleBasedRoute({ component: Component, roles, ...rest }) {
 			let data = await response.json()
 			setAuthUser(data)
 		}else{
-			AuthContext.logoutUser()
+			localStorage.removeItem("authToken");
+			history.push("/login");
+			// AuthContext.logoutUser()
 		}
 	}
 

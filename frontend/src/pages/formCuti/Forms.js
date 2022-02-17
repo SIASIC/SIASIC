@@ -125,7 +125,6 @@ function Forms() {
 			<SectionTitle>Alamat Cuti</SectionTitle>
 
 			<div className="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-
 				<Label>
 					<span>Alamat selama menjalankan cuti</span>
 					<Textarea
@@ -135,11 +134,10 @@ function Forms() {
 					/>
 				</Label>
 
-        <Label className="mt-4">
-          <span>Telepon</span>
-          <Input className="mt-1" placeholder="120" />
-        </Label>
-
+				<Label className="mt-4">
+					<span>Telepon</span>
+					<Input className="mt-1" placeholder="120" />
+				</Label>
 			</div>
 
 			<SectionTitle>Upload File Persyaratan</SectionTitle>
