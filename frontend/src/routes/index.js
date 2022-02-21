@@ -15,6 +15,10 @@ const FormCutiDash = lazy(() => import('../pages/formCuti/Index'))
 const FormCutiInput = lazy(()=> import('../pages/formCuti/Forms'))
 const FormCutiEdit = lazy(()=> import('../pages/formCuti/FormsViewEdit'))
 
+const JenisCutiDash = lazy(() => import('../pages/jenisCuti/Index'))
+const JenisCutiInput = lazy(() => import('../pages/jenisCuti/Forms'))
+const JenisCutiEdit = lazy(()=> import('../pages/jenisCuti/FormsViewEdit'))
+
 /**
  * ⚠ These are internal routes!
  * They will be rendered inside the app, using the default `containers/Layout`.
@@ -45,6 +49,21 @@ const routes = [
     path: '/form-cuti/edit',
     component: FormCutiEdit,
     roles: ['1','2','3']
+  },
+  {
+    path: '/jenis-cuti',
+    component: JenisCutiDash,
+    roles: ['1']
+  },
+  {
+    path: '/jenis-cuti/add',
+    component: JenisCutiInput,
+    roles: ['1']
+  },
+  {
+    path: '/jenis-cuti/edit',
+    component: JenisCutiEdit,
+    roles: ['1']
   },
   {
     path: '/forms',

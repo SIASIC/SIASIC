@@ -17,6 +17,11 @@ const routes = [
     name: 'Form Cuti',
   },
   {
+    path: '/app/jenis-cuti',
+    icon: 'FormsIcon',
+    name: 'Jenis Cuti',
+  },
+  {
     path: '/app/forms',
     icon: 'FormsIcon',
     name: 'Forms',

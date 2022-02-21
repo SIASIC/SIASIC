@@ -211,7 +211,7 @@ function Forms() {
 			</div>
 
 			<Button className="mb-4">
-				<span>Submit Form</span>
+				<span>Ubah form cuti</span>
 			</Button>
 
 			<div className="my-8"></div>

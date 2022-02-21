@@ -11,7 +11,6 @@ import {
 	TableFooter,
 	TableContainer,
 	Badge,
-	Avatar,
 	Button,
 	Pagination,
 	Label,
@@ -36,23 +35,6 @@ function Tables() {
 	 * component, like Table(?) and TableWithActions(?) hiding the
 	 * presentation details away from the page view.
 	 */
-
-	const [isMenuAksiOpen, setIsMenuAksiOpen] = useState(false);
-	const [isFilterOpen, setIsFilterOpen] = useState("hidden");
-
-	function handlerMenuAksiClick() {
-		setIsMenuAksiOpen(!isMenuAksiOpen);
-	}
-
-	function handlerFilterClick() {
-		if (isFilterOpen == "hidden") {
-			setIsFilterOpen("");
-		} else {
-			setIsFilterOpen("hidden");
-		}
-		// setIsFilterOpen(!isFilterOpen);
-		// console.log(isFilterOpen);
-	}
 
 	// setup pages control for every table
 	const [pageTable1, setPageTable1] = useState(1);
@@ -100,11 +82,11 @@ function Tables() {
 
 	return (
 		<>
-			<PageTitle>Form Cuti</PageTitle>
+			<PageTitle>Jenis Cuti</PageTitle>
 
 			<div className="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 flex flex-col flex-wrap mb-8 space-y-4 md:flex-row md:items-end md:space-x-4">
 				<Label>
-					<span>Cari Form</span>
+					<span>Cari Jenis Cuti</span>
 					<div className="relative text-gray-500 focus-within:text-purple-600">
 						<input
 							className="block w-full pr-20 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
@@ -116,44 +98,8 @@ function Tables() {
 					</div>
 				</Label>
 
-				<div className="relative">
-					<Button iconLeft={EditIcon} onClick={handlerMenuAksiClick}>
-						<span>Aksi Terpilih</span>
-					</Button>
-
-					<Dropdown
-						align="right"
-						isOpen={isMenuAksiOpen}
-						onClose={() => setIsMenuAksiOpen(false)}
-					>
-						<DropdownItem tag="a" href="#" className="justify-between">
-							<span>Hapus</span>
-						</DropdownItem>
-						<DropdownItem tag="a" href="#" className="justify-between">
-							<span>Disetujui</span>
-						</DropdownItem>
-						<DropdownItem tag="a" href="#" className="justify-between">
-							<span>Perubahan</span>
-						</DropdownItem>
-						<DropdownItem tag="a" href="#" className="justify-between">
-							<span>Ditangguhkan</span>
-						</DropdownItem>
-						<DropdownItem onClick={() => alert("Alerts!")}>
-							<span>Tidak disetujui</span>
-						</DropdownItem>
-					</Dropdown>
-				</div>
 				<div>
-					<Button
-						iconLeft={FilterIcon}
-						onClick={handlerFilterClick}
-						className="fill-current"
-					>
-						<span>Filter</span>
-					</Button>
-				</div>
-				<div>
-					<Link to="/app/form-cuti/add">
+					<Link to="/app/jenis-cuti/add">
 						<Button iconLeft={PlusIcon} className="fill-current">
 							<span>Tambah</span>
 						</Button>
@@ -161,101 +107,21 @@ function Tables() {
 				</div>
 			</div>
 
-			<div
-				className={`px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 ${isFilterOpen}`}
-			>
-				<Label>
-					<span>Name</span>
-					<Input className="mt-1" placeholder="Jane Doe" />
-				</Label>
-
-				<Label className="mt-4">
-					<span>Disabled</span>
-					<Input disabled className="mt-1" placeholder="Jane Doe" />
-				</Label>
-
-				<div className="mt-4">
-					{/* TODO: Check if this label is accessible, or fallback */}
-					{/* <span className="text-sm text-gray-700 dark:text-gray-400">Account Type</span> */}
-					<Label>Account Type</Label>
-					<div className="mt-2">
-						<Label radio>
-							<Input type="radio" value="personal" name="accountType" />
-							<span className="ml-2">Personal</span>
-						</Label>
-						<Label className="ml-6" radio>
-							<Input type="radio" value="business" name="accountType" />
-							<span className="ml-2">Business</span>
-						</Label>
-						<Label disabled className="ml-6" radio>
-							<Input
-								disabled
-								type="radio"
-								value="disabled"
-								name="accountType"
-							/>
-							<span className="ml-2">Disabled</span>
-						</Label>
-					</div>
-				</div>
-
-				<Label className="mt-4">
-					<span>Requested Limit</span>
-					<Select className="mt-1">
-						<option>$1,000</option>
-						<option>$5,000</option>
-						<option>$10,000</option>
-						<option>$25,000</option>
-					</Select>
-				</Label>
-
-				<Label className="mt-4">
-					<span>Multiselect</span>
-					<Select className="mt-1" multiple>
-						<option>Option 1</option>
-						<option>Option 2</option>
-						<option>Option 3</option>
-						<option>Option 4</option>
-						<option>Option 5</option>
-					</Select>
-				</Label>
-
-				<Label className="mt-4">
-					<span>Message</span>
-					<Textarea
-						className="mt-1"
-						rows="3"
-						placeholder="Enter some long form content."
-					/>
-				</Label>
-
-				<Label className="mt-6" check>
-					<Input type="checkbox" />
-					<span className="ml-2">
-						I agree to the <span className="underline">privacy policy</span>
-					</span>
-				</Label>
-			</div>
-
 			{/* <SectionTitle>Table with actions</SectionTitle> */}
 			<TableContainer className="mb-8">
 				<Table>
 					<TableHeader>
 						<tr>
-							<TableCell></TableCell>
-							<TableCell>PNS</TableCell>
-							<TableCell>Unit Kerja</TableCell>
 							<TableCell>Jenis Cuti</TableCell>
-							<TableCell>Alasan</TableCell>
+							<TableCell>Persyaratan</TableCell>
+							<TableCell>Jatah (hari)</TableCell>
+							<TableCell>Pejabat Bersangkutan</TableCell>
 							<TableCell>Action</TableCell>
 						</tr>
 					</TableHeader>
 					<TableBody>
 						{dataTable2.map((user, i) => (
 							<TableRow key={i}>
-								<TableCell>
-									<Input type="checkbox" />
-								</TableCell>
 								<TableCell>
 									<div className="flex items-center text-sm">
 										{/* <Avatar
@@ -284,13 +150,13 @@ function Tables() {
 								</TableCell>
 								<TableCell>
 									<div className="flex items-center space-x-4">
-										<Link to="/app/form-cuti/edit">
+										<Link to="/app/jenis-cuti/edit">
 											<Button layout="link" size="icon" aria-label="Edit">
 												<EditIcon className="w-5 h-5" aria-hidden="true" />
 											</Button>
 										</Link>
 
-										<Button layout="link" size="icon" aria-label="Delete" onClick={() => alert("Data akan dihapus!")}>
+										<Button layout="link" size="icon" aria-label="Delete" onClick={() => alert('Data ini akan dihapus!')}>
 											<TrashIcon className="w-5 h-5" aria-hidden="true" />
 										</Button>
 									</div>
