@@ -16,6 +16,25 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('form-cuti') }}" :active="request()->routeIs('form-cuti')">
+                        {{ __('Form Cuti') }}
+                    </x-jet-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('unit-kerja') }}" :active="request()->routeIs('unit-kerja')">
+                        {{ __('Unit Kerja') }}
+                    </x-jet-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('jenis-cuti') }}" :active="request()->routeIs('jenis-cuti')">
+                        {{ __('Jenis Cuti') }}
+                    </x-jet-nav-link>
+                </div>
+
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
