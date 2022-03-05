@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,7 +26,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // ! Form Cuti
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/form-cuti', function () {
-    return "form cuti";
+    return view('form-cuti.form-cuti');
 })->name('form-cuti');
 
 // ! Unit Kerja
