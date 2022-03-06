@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\FormCuti;
+use App\Models\JenisCuti;
 use Illuminate\Http\Request;
 
 class FormCutiController extends Controller
 {
     public function index(){
-        $form_cutis = FormCuti::orderBy('created_at', 'desc')->paginate(10);
+        $form_cutis = FormCuti::orderBy('created_at', 'desc')->with(['jenis_cuti'])->paginate(10);
+
+        $jenis_cutis = JenisCuti::get();
 
         return view('form-cuti.form-cuti', [
             'form_cutis' => $form_cutis,
@@ -16,13 +19,15 @@ class FormCutiController extends Controller
     }
 
     public function viewAdd(){
-        return view('form-cuti.form-cuti-add');
+        $jenis_cutis = JenisCuti::get();
+        
+        return view('form-cuti.form-cuti-add', [
+            'jenis_cutis' => $jenis_cutis,
+        ]);
     }
 
     public function store(Request $request){
         
-        // dd($request);
-
         $total_waktu = "";
 
         $request->validate([
@@ -48,7 +53,6 @@ class FormCutiController extends Controller
             $total_waktu = $request->selama * 365;
         }
 
-        // FormCuti::create([
         $request->user()->form_cutis()->create([
             'pns_nip' => $request->nip,
             'pns_nama' => $request->nama,
@@ -61,7 +65,7 @@ class FormCutiController extends Controller
             'tanggal_akhir' => $request->sampai,
             'catatan_cuti' => $request->catatan_cuti,
             'alamat' => $request->alamat,
-            // 'user_id' => auth()->user()->id,
+            'jenis_cuti_id' => $request->jenis_cuti
         ]);
 
         return redirect()->route('form-cuti');

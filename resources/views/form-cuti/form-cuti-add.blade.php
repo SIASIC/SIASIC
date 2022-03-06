@@ -88,11 +88,9 @@
                                             </label>
                                             <select name="jenis_cuti" id="jenis-cuti" class="select select-bordered" required>
                                                 <option disabled selected>Pilih salah satu</option>
-                                                <option>Star Wars</option>
-                                                <option>Harry Potter</option>
-                                                <option>Lord of the Rings</option>
-                                                <option>Planet of the Apes</option>
-                                                <option>Star Trek</option>
+                                                @foreach ($jenis_cutis as $jenis_cuti)
+                                                    <option value="{{ $jenis_cuti->id }}">{{ $jenis_cuti->nama_cuti }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
 

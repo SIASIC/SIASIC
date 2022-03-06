@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\JenisCuti;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class FormCuti extends Model
 {
@@ -33,5 +34,11 @@ class FormCuti extends Model
         'persetujuan_pejabat',
         'form_scan_tanda_tangan',
         'user_id',
+        'jenis_cuti_id',
     ];
+
+    // Relasi form cuti dan jenis cuti
+    public function jenis_cuti(){
+        return $this->belongsTo(JenisCuti::class);
+    }
 }

@@ -85,7 +85,7 @@
                                                 <th>{{ $form_cuti->id }}</th>
                                                 <td>{{ substr($form_cuti->pns_nama, 0, 20) }}...</td>
                                                 <td>{{ substr($form_cuti->pns_unit_kerja, 0, 20) }}...</td>
-                                                <td>Jenis Cuti</td>
+                                                <td>{{ $form_cuti->jenis_cuti->nama_cuti }}</td>
                                                 <td>{{ substr($form_cuti->alamat, 0, 20)  }}...</td>
                                                 <td>{{ date('d-m-Y', strtotime($form_cuti->created_at))  }}</td>
                                                 <td>
