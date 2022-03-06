@@ -63,5 +63,7 @@ class FormCutiController extends Controller
             'alamat' => $request->alamat,
             // 'user_id' => auth()->user()->id,
         ]);
+
+        return redirect()->route('form-cuti');
     }
 }

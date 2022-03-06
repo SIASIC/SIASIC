@@ -3302,6 +3302,11 @@ body[dir="rtl"] .checkbox:checked,
   border-radius: 9999px;
   padding: 0px;
 }
+.table-compact :where(th, td) {
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
 .fixed {
   position: fixed;
 }
@@ -3342,14 +3347,6 @@ body[dir="rtl"] .checkbox:checked,
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
-}
-.mx-4 {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-.mx-8 {
-  margin-left: 2rem;
-  margin-right: 2rem;
 }
 .my-8 {
   margin-top: 2rem;
@@ -3426,12 +3423,6 @@ body[dir="rtl"] .checkbox:checked,
 }
 .-mt-px {
   margin-top: -1px;
-}
-.mb-1 {
-  margin-bottom: 0.25rem;
-}
-.mb-2 {
-  margin-bottom: 0.5rem;
 }
 .block {
   display: block;
@@ -3797,14 +3788,6 @@ body[dir="rtl"] .checkbox:checked,
 .bg-gray-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-}
-.bg-red-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
-}
-.bg-red-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;

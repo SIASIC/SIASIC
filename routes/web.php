@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormCutiController;
+use App\Http\Controllers\JenisCutiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,8 +48,21 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/unit-kerja', function () 
     return "unit kerja";
 })->name('unit-kerja');
 
+
+
 // ! Jenis Cuti
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/jenis-cuti', function () {
-    return "jenis cuti";
-})->name('jenis-cuti');
+Route::middleware(['auth'])->group(function () {
+    
+    // Dashboard form cuti
+    Route::get('/jenis-cuti', [JenisCutiController::class, 'index'])->name('jenis-cuti');
+
+    // Form tambah pengajuan cuti
+    Route::get('/jenis-cuti/add', [JenisCutiController::class, 'viewAdd'])->name('jenis-cuti-add');
+    Route::post('/jenis-cuti/add', [JenisCutiController::class, 'store']);
+
+});
+
+// Route::middleware(['auth:sanctum', 'verified'])->get('/jenis-cuti', function () {
+//     return "jenis cuti";
+// })->name('jenis-cuti');

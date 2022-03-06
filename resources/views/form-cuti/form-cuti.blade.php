@@ -65,7 +65,7 @@
 
                             @if ($form_cutis->count())
                             
-                                <table class="table table-zebra w-full">
+                                <table class="table table-zebra table-compact w-full">
                                     <!-- head -->
                                     <thead>
                                         <tr>
