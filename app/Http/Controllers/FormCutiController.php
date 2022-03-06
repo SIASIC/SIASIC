@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 class FormCutiController extends Controller
 {
     public function index(){
-        return view('form-cuti.form-cuti');
+        $form_cutis = FormCuti::orderBy('created_at', 'desc')->paginate(10);
+
+        return view('form-cuti.form-cuti', [
+            'form_cutis' => $form_cutis,
+        ]);
     }
 
     public function viewAdd(){

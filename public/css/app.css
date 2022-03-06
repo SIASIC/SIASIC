@@ -3343,6 +3343,18 @@ body[dir="rtl"] .checkbox:checked,
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.mx-8 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
 .ml-3 {
   margin-left: 0.75rem;
 }

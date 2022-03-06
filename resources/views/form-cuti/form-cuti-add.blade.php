@@ -113,9 +113,7 @@
                                                 <span class="label-text">Lama Cuti</span>
                                             </label>
                                             <input type="number" placeholder="Selama" id="selama" name="selama"
-                                                required maxlength="6"
-                                                class="input input-bordered w-full"
-                                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                required class="input input-bordered w-full"">
                                         </div>
 
                                         <div class="form-control mb-4">

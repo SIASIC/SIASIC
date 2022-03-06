@@ -62,61 +62,50 @@
                     <div class="mt-6">
                         <div class="overflow-x-auto">
                             {{-- Tabel data --}}
-                            <table class="table table-zebra w-full">
-                                <!-- head -->
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>PNS</th>
-                                        <th>Unit Kerja</th>
-                                        <th>Jenis Cuti</th>
-                                        <th>Alasan</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- row 1 -->
-                                    <tr>
-                                        <th>1</th>
-                                        <td>Cy Ganderton</td>
-                                        <td>Quality Control Specialist</td>
-                                        <td>Blue</td>
-                                        <td>Cuti Sakit</td>
-                                        <td>
-                                            <button class="btn btn-xs btn-error"
-                                                onclick="alert('Data akan dihapus selamanya!')">Hapus</button>
-                                            <button class="btn btn-xs btn-info">Review</button>
-                                        </td>
-                                    </tr>
-                                    <!-- row 2 -->
-                                    <tr>
-                                        <th>2</th>
-                                        <td>Hart Hagerty</td>
-                                        <td>Desktop Support Technician</td>
-                                        <td>Purple</td>
-                                        <td>Cuti Sakit</td>
-                                        <td>
-                                            <button class="btn btn-xs btn-error"
-                                                onclick="alert('Data akan dihapus selamanya!')">Hapus</button>
-                                            <button class="btn btn-xs btn-info">Review</button>
-                                        </td>
-                                    </tr>
-                                    <!-- row 3 -->
-                                    <tr>
-                                        <th>3</th>
-                                        <td>Brice Swyre</td>
-                                        <td>Tax Accountant</td>
-                                        <td>Red</td>
-                                        <td>Cuti Sakit</td>
-                                        <td>
-                                            <button class="btn btn-xs btn-error"
-                                                onclick="alert('Data akan dihapus selamanya!')">Hapus</button>
-                                            <button class="btn btn-xs btn-info">Review</button>
-                                        </td>
-                                    </tr>
 
-                                </tbody>
-                            </table>
+                            @if ($form_cutis->count())
+                            
+                                <table class="table table-zebra w-full">
+                                    <!-- head -->
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>PNS</th>
+                                            <th>Unit Kerja</th>
+                                            <th>Jenis Cuti</th>
+                                            <th>Alasan</th>
+                                            <th>Tanggal Pengajuan</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($form_cutis as $form_cuti)
+                                            
+                                            <tr>
+                                                <th>{{ $form_cuti->id }}</th>
+                                                <td>{{ substr($form_cuti->pns_nama, 0, 20) }}...</td>
+                                                <td>{{ substr($form_cuti->pns_unit_kerja, 0, 20) }}...</td>
+                                                <td>Jenis Cuti</td>
+                                                <td>{{ substr($form_cuti->alamat, 0, 20)  }}...</td>
+                                                <td>{{ date('d-m-Y', strtotime($form_cuti->created_at))  }}</td>
+                                                <td>
+                                                    <button class="btn btn-xs btn-error"
+                                                        onclick="alert('Data akan dihapus selamanya!')">Hapus</button>
+                                                    <button class="btn btn-xs btn-info">Review</button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        
+                                    </tbody>
+                                </table>
+
+                                <div class="my-8">
+                                    {{ $form_cutis->links() }}
+                                </div>
+
+                            @else
+                                <h1>Tidak ada data</h1>
+                            @endif
                         </div>
                     </div>
 
