@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FormCutiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,17 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/form-cuti', function () {
     return view('form-cuti.form-cuti');
 })->name('form-cuti');
+
+Route::middleware(['auth'])->group(function () {
+    
+    // Dashboard form cuti
+    Route::get('/form-cuti', [FormCutiController::class, 'index'])->name('form-cuti');
+
+    // Form tambah pengajuan cuti
+    Route::get('/form-cuti/add', [FormCutiController::class, 'viewAdd'])->name('form-cuti-add');
+    Route::post('/form-cuti/add', [FormCutiController::class, 'store']);
+
+});
 
 // ! Unit Kerja
 
