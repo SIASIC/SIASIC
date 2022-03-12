@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('file_persyaratans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_form_cuti')
+                ->constrained('form_cutis')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->text('path');
             $table->timestamps();
         });
     }

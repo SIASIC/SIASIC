@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\FormCuti;
 use App\Models\JenisCuti;
 use Illuminate\Http\Request;
+use App\Models\FilePersyaratan;
+use Illuminate\Support\Facades\Storage;
 
 class FormCutiController extends Controller
 {
@@ -27,7 +29,7 @@ class FormCutiController extends Controller
     }
 
     public function store(Request $request){
-        
+
         $total_waktu = "";
 
         $request->validate([
@@ -53,7 +55,7 @@ class FormCutiController extends Controller
             $total_waktu = $request->selama * 365;
         }
 
-        $request->user()->form_cutis()->create([
+        $form_cuti = $request->user()->form_cutis()->create([
             'pns_nip' => $request->nip,
             'pns_nama' => $request->nama,
             'pns_unit_kerja' => $request->unit_kerja,
@@ -67,6 +69,22 @@ class FormCutiController extends Controller
             'alamat' => $request->alamat,
             'jenis_cuti_id' => $request->jenis_cuti
         ]);
+
+        //Proses upload file
+        $files = $request->file_upload;
+        foreach ($files as $file) {
+            $newFileName = $form_cuti->id . '-' . $file;
+
+            // pindah foto ke storage/riceFields
+            Storage::move('public/temps/'.$file, 'public/file-persyaratan/'.$newFileName);
+
+            //simpan nama ke database
+            FilePersyaratan::create([
+                'id_form_cuti' => $form_cuti->id,
+                'path' => 'public/file-persyaratan/' . $newFileName,
+            ]);
+
+        }
 
         return redirect()->route('form-cuti');
     }
