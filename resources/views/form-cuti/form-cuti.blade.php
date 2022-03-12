@@ -1,4 +1,5 @@
 <x-app-layout>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
@@ -32,19 +33,6 @@
                     </div>
 
                     <hr class="my-4">
-                    {{--
-                    <div class="container grid grid-cols-1 md:grid-cols-2">
-                        <div class="form-control w-full max-w-xs">
-                            <label class="label">
-                                <span class="label-text">Cari form</span>
-                            </label>
-                            <input type="text" id='cari' name='cari' placeholder="Ketik disini..."
-                                class="input input-bordered w-full max-w-xs">
-                        </div>
-                        <div>
-                            hai
-                        </div>
-                    </div> --}}
 
                     <div class="flex justify-center bg-gray-50 p-6 rounded-lg gap-4">
                         <form action="#" method="get">
@@ -115,4 +103,5 @@
             </div>
         </div>
     </div>
+
 </x-app-layout>

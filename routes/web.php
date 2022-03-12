@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormCutiController;
 use App\Http\Controllers\JenisCutiController;
+use App\Http\Controllers\UploadFileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,11 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/jenis-cuti', function () {
-//     return "jenis cuti";
-// })->name('jenis-cuti');
+// ! File Upload
+Route::prefix('/file')->middleware(['auth'])->group(function () {
+    
+    Route::post('/add', [UploadFileController::class, 'store']);
+
+    Route::delete('/delete', [UploadFileController::class, 'destroy']);
+    
+});
